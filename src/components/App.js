@@ -1,5 +1,11 @@
+import ContenedorCategorias from "./Categorias/ContenedorCategorias/ContenedorCategorias";
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <ContenedorCategorias />
+    </>
+  );
 };
 
 export default App;
