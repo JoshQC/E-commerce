@@ -1,15 +1,10 @@
-import { Routes, Route, Link } from "react-router-dom";
-import ContenedorCategorias from "./Categorias/ContenedorCategorias/ContenedorCategorias";
-
-const Redireccionar = () => {
-  return <Link to={"/categorias"}>Ir a Categorias</Link>;
-};
+import { Routes, Route } from "react-router-dom";
+import Inicio from "./routes/Inicio";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Redireccionar />} />
-      <Route path="categorias" element={<ContenedorCategorias />} />
+      <Route path="/" element={<Inicio />} />
     </Routes>
   );
 };
