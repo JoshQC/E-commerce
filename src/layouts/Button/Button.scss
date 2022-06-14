@@ -1,0 +1,28 @@
+button {
+  margin: 5px 0px;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  outline: none;
+  padding: 8px 10px;
+  display: flex;
+
+  .icon {
+    width: 30px;
+    height: 20px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #c5c3c6;
+    color: white;
+  }
+}
+
+.backColorGreen {
+  background-color: rgb(80, 165, 80);
+}
+
+.backColorBlue {
+  background-color: rgb(64, 128, 201);
+}

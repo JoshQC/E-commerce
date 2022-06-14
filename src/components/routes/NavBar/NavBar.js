@@ -1,21 +1,22 @@
 import { Outlet, Link } from "react-router-dom";
-import "./NavBar.scss";
+
+import { ReactComponent as Logo } from "./../../../assets/crown.svg";
+
+//Modulos de SASS: el archivo como objeto
+import styles from "./NavBar.module.scss";
 
 const NavBar = () => {
   return (
     <>
-      <nav className="navbar">
-        <Link className="logo" to="/">
-          <img
-            src="https://cdn-icons.flaticon.com/png/512/3863/premium/3863590.png?token=exp=1653018137~hmac=386e6f87d0e8328567a6f8a899dfe98f"
-            alt="logo"
-          />
+      <nav className={styles.navbar}>
+        <Link className={styles.logo} to="/">
+          <Logo />
         </Link>
-        <div className="navbar-links">
-          <Link className="navbar-link" to="/tienda">
+        <div className={styles.navbarLinks}>
+          <Link className={styles.navbarLink} to="/tienda">
             Tienda
           </Link>
-          <Link className="navbar-link" to="/acceder">
+          <Link className={styles.navbarLink} to="/acceder">
             Acceder
           </Link>
         </div>
