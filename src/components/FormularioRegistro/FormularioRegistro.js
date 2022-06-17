@@ -8,6 +8,7 @@ import {
   createUserWithEmailPasswordForFirestore,
   crearDocumentoUsuarios,
 } from "./../../utils/firebase/firebase";
+
 import Input from "../../layouts/Input/Input";
 import Button from "../../layouts/Button/Button";
 
@@ -57,11 +58,11 @@ const FormularioRegistro = () => {
         correo,
         contrasena
       );
+
       crearDocumentoUsuarios(user, { nombre: nombre });
       mostrarAlerta("OK", "Usuario Creado", "success");
       setCamposFormulario(datosFormulario);
     } catch (error) {
-      console.error(error.code);
       errorAutenticacion(error.code);
     }
   };

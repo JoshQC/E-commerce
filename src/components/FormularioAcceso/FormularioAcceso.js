@@ -4,14 +4,17 @@ import {
   mostrarAlerta,
   errorAutenticacion,
 } from "./../../utils/sweetalert2/sweetalert2";
+
 import {
   crearDocumentoUsuarios,
   signInWithGooglePopup,
   signInWithTwitterPopup,
   signInWithEmailPasswordForFirestore,
 } from "./../../utils/firebase/firebase";
+
 import Input from "../../layouts/Input/Input";
 import Button from "../../layouts/Button/Button";
+
 import { ReactComponent as GoogleIcon } from "./../../assets/google.svg";
 import { ReactComponent as TwitterIcon } from "./../../assets/twitter.svg";
 
@@ -33,20 +36,21 @@ const FormularioAcceso = () => {
     e.preventDefault();
 
     try {
-      const respuesta = await signInWithEmailPasswordForFirestore(
+      const { user } = await signInWithEmailPasswordForFirestore(
         correo,
         contrasena
       );
-      console.log(respuesta);
+
       mostrarAlerta("OK", "Usuario Creado", "success");
       setCamposFormulario(datosFormulario);
     } catch (error) {
-      errorAutenticacion("auth/user-not-found");
+      errorAutenticacion(error.code);
     }
   };
   const loguearConGoogle = async () => {
     const { user } = await signInWithGooglePopup();
     crearDocumentoUsuarios(user);
+    //setUsuarioLogueado(user);
   };
 
   const loguearConTwitter = async () => {

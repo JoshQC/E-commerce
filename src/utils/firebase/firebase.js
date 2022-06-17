@@ -6,7 +6,9 @@ import {
   GoogleAuthProvider,
   TwitterAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import {
   Firestore,
@@ -83,10 +85,12 @@ export const createUserWithEmailPasswordForFirestore = async (
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const signInWithEmailPasswordForFirestore = async (
-  email,
-  password
-) => {
+export const signInWithEmailPasswordForFirestore = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const signOutUsuario = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = async (callback) =>
+  await onAuthStateChanged(auth, callback);
