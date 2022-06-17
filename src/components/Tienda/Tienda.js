@@ -1,14 +1,17 @@
-import data from "./../../data.json";
+import { useContext, useState } from "react";
+import { ProductoContext } from "../../contexts/productos";
 import "./Tienda.scss";
 
 const Tienda = () => {
-  console.log(data);
+  const { productos } = useContext(ProductoContext);
   return (
     <div className="tienda">
       <h2>Tienda</h2>
-      {data.map((producto) => {
-        return <h3>{producto.nombre}</h3>;
-      })}
+      {productos.map(({ id, nombre }) => (
+        <div key={id}>
+          <h3>{nombre}</h3>
+        </div>
+      ))}
     </div>
   );
 };
