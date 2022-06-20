@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
-import { ProductoContext } from "../../contexts/productos";
+
+import { ProductosContext } from "../../contexts/productos";
+
 import "./Tienda.scss";
 
 const Tienda = () => {
-  const { productos } = useContext(ProductoContext);
+  const { productos } = useContext(ProductosContext);
   return (
     <div className="tienda">
       <h2>Tienda</h2>
