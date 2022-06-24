@@ -10,13 +10,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import {
-  Firestore,
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-} from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 const provider = new GoogleAuthProvider();
 const providerTwitter = new TwitterAuthProvider();
@@ -39,7 +33,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+//const firebaseApp =
 
 export const auth = getAuth();
 
