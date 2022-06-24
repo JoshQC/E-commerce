@@ -1,3 +1,11 @@
 .tienda {
   margin: 0 25px;
+
+  .grid-productos {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, fr);
+    column-gap: 20px;
+    row-gap: 50px;
+  }
 }

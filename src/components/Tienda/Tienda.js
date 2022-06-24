@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 
 import { ProductosContext } from "../../contexts/productos";
 
+import TarjetaProducto from "./TarjetaProducto/TarjetaProducto";
+
 import "./Tienda.scss";
 
 const Tienda = () => {
@@ -9,11 +11,11 @@ const Tienda = () => {
   return (
     <div className="tienda">
       <h2>Tienda</h2>
-      {productos.map(({ id, nombre }) => (
-        <div key={id}>
-          <h3>{nombre}</h3>
-        </div>
-      ))}
+      <div className="grid-productos">
+        {productos.map((producto) => (
+          <TarjetaProducto key={producto.id} producto={producto} />
+        ))}
+      </div>
     </div>
   );
 };
