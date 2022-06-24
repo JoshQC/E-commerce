@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import "./ItemCategoria.scss";
 
 const ItemCategoria = ({ categoria }) => {
@@ -13,6 +15,10 @@ const ItemCategoria = ({ categoria }) => {
       </div>
     </div>
   );
+};
+
+ItemCategoria.propTypes = {
+  categoria: PropTypes.object,
 };
 
 export default ItemCategoria;
