@@ -36,11 +36,8 @@ const FormularioAcceso = () => {
     e.preventDefault();
 
     try {
-      const { user } = await signInWithEmailPasswordForFirestore(
-        correo,
-        contrasena
-      );
-
+      await signInWithEmailPasswordForFirestore(correo, contrasena);
+      //const { user } =
       mostrarAlerta("OK", "Usuario Creado", "success");
       setCamposFormulario(datosFormulario);
     } catch (error) {
