@@ -3,13 +3,18 @@ import { useContext } from "react";
 
 import { ReactComponent as Logo } from "./../../../assets/crown.svg";
 import { UsuarioContext } from "../../../contexts/usuarios";
+import { CarritoContext } from "../../../contexts/carrito";
 import { signOutUsuario } from "../../../utils/firebase/firebase";
+
+import Carrito from "../../Carrito/Carrito";
 
 //Modulos de SASS: el archivo como objeto
 import styles from "./NavBar.module.scss";
+import DropdownCarrito from "../../Carrito/DropdownCarrito/DropdownCarrito";
 
 const NavBar = () => {
   const { usuarioLogueado } = useContext(UsuarioContext);
+  const { mostrarCarrito } = useContext(CarritoContext);
 
   return (
     <>
@@ -30,7 +35,9 @@ const NavBar = () => {
               Acceder
             </Link>
           )}
+          <Carrito />
         </div>
+        {mostrarCarrito && <DropdownCarrito />}
       </nav>
       <Outlet />
     </>
