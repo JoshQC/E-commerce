@@ -1,25 +1,34 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "./../../../layouts/Button/Button";
+import ItemsCarrito from "./ItemsCarrito/ItemsCarrito";
 import { CarritoContext } from "../../../contexts/carrito";
 
 import "./DropdownCarrito.scss";
 
 const DropdownCarrito = () => {
   const { itemsCarrito } = useContext(CarritoContext);
+  const navigate = useNavigate();
 
+  const handleOnClick = () => {
+    navigate("/pagar");
+  };
   return (
     <div className="contenedor-dropdown">
       <div className="items-carrito">
-        {itemsCarrito ? (
+        {itemsCarrito.length > 0 ? (
           itemsCarrito.map((item) => {
-            return <h2>{item.nombre}</h2>;
+            return <ItemsCarrito key={item.id} item={item} />;
           })
         ) : (
           <p>No hay items</p>
         )}
       </div>
-      <Button type="button" text="Pagar" />
+
+      {itemsCarrito.length > 0 && (
+        <Button type="button" text="Pagar" onClick={handleOnClick} />
+      )}
     </div>
   );
 };
