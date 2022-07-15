@@ -8,11 +8,13 @@ import { CarritoContext } from "../../../contexts/carrito";
 import "./DropdownCarrito.scss";
 
 const DropdownCarrito = () => {
-  const { itemsCarrito } = useContext(CarritoContext);
+  const { itemsCarrito, setMostrarCarrito, mostrarCarrito } =
+    useContext(CarritoContext);
   const navigate = useNavigate();
 
   const handleOnClick = () => {
     navigate("/pagar");
+    setMostrarCarrito(!mostrarCarrito);
   };
   return (
     <div className="contenedor-dropdown">
