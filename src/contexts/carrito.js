@@ -24,25 +24,39 @@ const removerItem = (itemsCarrito, producto) => {
   );
 };
 
+const limpiarItem = (itemsCarrito, producto) => {
+  return itemsCarrito.filter((item) => item.id !== producto.id);
+};
+
 export const CarritoContext = createContext({
   mostrarCarrito: false,
   setMostrarCarrito: () => {},
   itemsCarrito: [],
   agregarAlCarrito: () => {},
   eliminarDelCarrito: () => {},
+  limpiarDelCarrito: () => {},
   contadorCarrito: 0,
+  totalCarrito: 0,
 });
 
 export const CarritoProvider = ({ children }) => {
   const [mostrarCarrito, setMostrarCarrito] = useState(false);
   const [itemsCarrito, setItemsCarrito] = useState([]);
   const [contadorCarrito, setContadorCarrito] = useState(0);
+  const [totalCarrito, setTotalCarrito] = useState(0);
 
   useEffect(() => {
     const nuevoContadorCarrito = itemsCarrito.reduce((acc, curr) => {
       return acc + curr.cantidad;
     }, 0);
     setContadorCarrito(nuevoContadorCarrito);
+  }, [itemsCarrito]);
+
+  useEffect(() => {
+    const nuevoTotalCarrito = itemsCarrito.reduce((acc, curr) => {
+      return acc + curr.cantidad * curr.precio;
+    }, 0);
+    setTotalCarrito(nuevoTotalCarrito);
   }, [itemsCarrito]);
 
   const agregarAlCarrito = (producto) => {
@@ -53,13 +67,19 @@ export const CarritoProvider = ({ children }) => {
     setItemsCarrito(removerItem(itemsCarrito, producto));
   };
 
+  const limpiarDelCarrito = (producto) => {
+    setItemsCarrito(limpiarItem(itemsCarrito, producto));
+  };
+
   const value = {
     mostrarCarrito,
     setMostrarCarrito,
     agregarAlCarrito,
     itemsCarrito,
     eliminarDelCarrito,
+    limpiarDelCarrito,
     contadorCarrito,
+    totalCarrito,
   };
 
   return (
